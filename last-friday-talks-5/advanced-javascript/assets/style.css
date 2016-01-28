@@ -1,0 +1,49 @@
+html, body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#wixiweb-logo {
+	bottom: 20px;
+	display: block;
+	left: 20px;
+	position: absolute;
+	z-index: 100;
+}
+
+    #wixiweb-logo > img {
+    	width: 40px;
+    	height: 40px;
+    }
+    
+.reveal img.unstyled {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+code.inline {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	padding: 3px 5px;
+}
+
+.reveal section .text-italic {
+	font-style: italic;
+}
+
+.reveal section ul.unstyled {
+	list-style: none;
+}
+
+.reveal section p.small {
+	font-size: 0.75em;
+}
+
+.reveal section p.tiny {
+	font-size: 0.6em;
+	font-weight: 300;
+}
+
+.reveal section .mgb {
+	margin-bottom: 1em;
+}
