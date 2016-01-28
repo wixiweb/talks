@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Let's talk about Git</title>
+        <link rel="icon" href="assets/img/poolparty.gif" type="image/gif" />
+        <meta name="description" content="Let's talk Advanced Javascript">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <link rel="stylesheet" href="libs/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="libs/reveal.js/css/theme.black.css" id="theme">
+        <link rel="stylesheet" href="libs/reveal.js/css/zenburn.css">
+        <link rel="stylesheet" href="assets/style.css">
+        <!--[if lt IE 9]>
+        <script src="libs/reveal.js/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <a id="wixiweb-logo" href="http://www.wixiweb.fr">
+            <img src="assets/img/wixiweb-icon.png" />
+        </a>
+
+        <div class="reveal">
+            <div class="slides">
+
+                <section>
+                    <section>
+                        <h4>Let's talk about</h4>
+                        <h1>Git</h1>
+                        <img src="assets/img/git.png" alt="Git logo" class="unstyled" style="max-height: 200px;" />
+                        <h4 class="mgb text-italic">Salut vieille branche !</h4>
+                        <p>
+                            <small>
+                                <a href="https://twitter.com/bastientanesie" title="Retrouvez-moi sur Twitter">@BastienTanésie</a>
+                                / <a href="http://wixiweb.fr" title="Wixiweb : c'est nous qu'on fait le Web !">Wixiweb</a>
+                                / <a href="https://github.com/wixiweb/talks/tree/master/last-friday-talks-5" title="Last Friday Talks #5 @wixiweb">LFT #5</a>
+                            </small>
+                        </p>
+                        <p class="tiny">Copyright &copy; 2016, Wixiweb</p>
+                    </section>
+                    
+                    <section data-background="assets/img/random-access-memories.gif">
+                        <h4 class="text-shadow">Y'a quoi au menu ?</h4>
+                        <ol class="text-shadow">
+                            <li>Git &ne; SVN</li>
+                            <li>Git Flow</li>
+                            <li>Gitlab <small>(en bonus)</small></li>
+                        </ol>
+                    </section>
+                </section><!-- Introduction -->
+                
+                <section>
+                    
+                    <section data-background="#0079BF">
+                        <h1>Git &ne; SVN</h1>
+                        <img src="assets/img/git.png" class="unstyled" />
+                        <br />
+                        <p>Pourquoi changer un truc qui fonctionne ?</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Git &ne; SVN</h4>
+                        
+                        <table class="small">
+                            <thead>
+                                <tr>
+                                    <th>Git</th>
+                                    <th>SVN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Système distribué <small>et centralisé</small></td>
+                                    <td>Système centralisé</td>
+                                </tr>
+                                <tr>
+                                    <td>Branching comme base du workflow</td>
+                                    <td>Branching basique <small>mais peu pratique</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Gestion évoluée des droits</td>
+                                    <td>Gestion assez pauvre des droits</td>
+                                </tr>
+                                <tr>
+                                    <td>Révision en hash <code class="inline">SHA1</code></td>
+                                    <td>Révision incrémentale</td>
+                                </tr>
+                                <tr>
+                                    <td>Checkout complet du dépôt</td>
+                                    <td>Checkout partiel</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombreux workflows possibles</td>
+                                    <td>Workflow centralisé unique</td>
+                                </tr>
+                                <tr>
+                                    <td>Gestion avancée de l'historique</td>
+                                    <td>Impossible d'annuler un commit</td>
+                                </tr>
+                                <tr>
+                                    <td>Multiples <code class="inline">remotes</code></td>
+                                    <td>Unique dépôt distant</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="small">Et la stat qui met tout le monde d'accord&hellip;</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Git &ne; SVN</h4>
+                        
+                        <table class="small mgb">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Git</th>
+                                    <th>SVN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1to1 English</td>
+                                    <td>330 Mo</td>
+                                    <td>2.4 Go</td>
+                                </tr>
+                                <tr>
+                                    <td>Mozzila</td>
+                                    <td>420Mo</td>
+                                    <td>12Go</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <img src="assets/img/deal-with-it.gif" class="unstyled" />
+                        
+                        <p class="small">C'est peut-être pas la taille qui compte, mais bon, à ce point-là&hellip;</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Git &ne; SVN</h4>
+                        <p>Points forts de Git</p>
+                        <ul>
+                            <li>Les branches</li>
+                            <li>Le travail en local</li>
+                            <li>La vitesse des opérations</li>
+                            <li>La <i>staging area</i>, les patches, etc.</li>
+                        </ul>
+                        <p>&mDDot;</p>
+                        <p>Créé par Linus Torvalds</p>
+                        <p>De nombreux projets passent à Git</p>
+                        <p class="small">Linux, Perl, Eclipse, Gnome, KDE, Ruby on Rails, Android, PostgreSQL, X.org, etc.</p>
+                    </section>
+                    
+                </section><!-- Git ≠ SVN -->
+                
+                <section>
+                    
+                    <section data-background="#0079BF">
+                        <h1>Git Flow</h1>
+                        <img src="assets/img/git-flow.svg" class="unstyled" style="max-height: 400px;" />
+                    </section>
+
+                    <section>
+                        <h4>Git Flow</h4>
+                        <ul>
+                            <li>Créé par <a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen</a> entre 2009 et 2010</li>
+                            <li>Méthodologie basée sur les branches</li>
+                            <li>Nombre d'acteurs illimité <small>high scalability</small></li>
+                            <li>Condition: <i>releases</i> espacées dans le temps</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Vincent Driessen : dev web et python</p>
+                            <p><i>releases</i> espacées dans le temps : à voir après</p>
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <h4>Git Flow</h4>
+                        <p>Quand j'ai découvert ça &hellip;</p>
+                        <img src="assets/img/scrubs-dancing.gif" class="unstyled" height="300" />
+                    </section>
+
+                    <section>
+                        <img src="assets/img/git-flow-master-develop.svg" class="unstyled full-page" />
+                        <aside class="notes">
+                            <ul>
+                                <li><code class="inline">master</code> = "production ready"</li>
+                                <li>Créer un <code class="inline">tag</code> pour chaque MEP</li>
+                                <li>Git hooks, serveur d'intégration continue, etc.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="assets/img/git-flow-master-develop-feature.svg" class="unstyled full-page" />
+                        <aside class="notes">
+                            <ul>
+                                <li><code class="inline">develop</code> vers <code class="inline">develop</code></li>
+                                <li>Convention : <code class="inline">feature/xyz</code></li>
+                                <li>Tout ce qui fait plus d'un commit</li>
+                                <li>Principalement en local</li>
+                                <li>Sur le serveur si travail à plusieurs sur une même <code class="inline">feature</code></li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="assets/img/git-flow-master-develop-feature-release.svg" class="unstyled full-page" />
+                        <aside class="notes">
+                            <ul>
+                                <li>Depuis <code class="inline">develop</code></li>
+                                <li>Convention : <code class="inline">release/[numéro tag]</code></li>
+                                <li>Première chose à faire : définir la version de la <code class="inline">release</code></li>
+                                <li>Corrections mineures liées à la <code class="inline">release</code> en elle-même</li>
+                                <li>Merge dans <code class="inline">master</code></li>
+                                <li>Création d'un <code class="inline">tag</code></li>
+                                <li>Merge dans <code class="inline">develop</code></li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="assets/img/git-flow-master-develop-hotfix.svg" class="unstyled full-page" />
+                        <aside class="notes">
+                            <ul>
+                                <li>Depuis <code class="inline">master</code> vers <code class="inline">master</code></li>
+                                <li>Convention : <code class="inline">hotfix/xyz</code></li>
+                                <li>Correction(s) sur <code class="inline">mastrer</code></li>
+                                <li>Création d'un <code class="inline">tag</code></li>
+                                <li>Merge dans <code class="inline">develop</code></li>
+                                <li>Si <code class="inline">release</code> en cours, back-merge dedans au lieu de <code class="inline">develop</code></li>
+                                <li>Le travail sur <code class="inline">develop</code> n'est pas impacté</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="assets/img/git-flow.svg" class="unstyled full-page" />
+                    </section>
+
+                </section><!-- Git Flow -->
+                    
+                <section>
+                    
+                    <section data-background="#0079BF">
+                        <h1>Gitlab</h1>
+                        <img src="assets/img/gitlab.png" class="unstyled" />
+                        <br />
+                        <p>Et si GitHub lui-même était Open Source ?</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Gitlab</h4>
+                        <p>Pourquoi Gitlab ?</p>
+                        
+                        <ul>
+                            <li>GitHub en version Open Source</li>
+                            <li>Maintenu par Gitlab Inc.</li>
+                            <li>De plus en plus d'utilisateurs et d'entreprises</li>
+                            <li>Mises à jour mensuelles</li>
+                            <li>Installation et maintenance faciles</li>
+                            <li>Full featured</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h4>Gitlab</h4>
+                        <p>Fonctionnalités principales</p>
+                        
+                        <ul style="font-size: 0.8em;">
+                            <li>Activity feed, network, graphs</li>
+                            <li>Repo/file browser, file edition</li>
+                            <li>Wiki (+ markdown)</li>
+                            <li>Merge requests</li>
+                            <li>Issue tracker</li>
+                            <li>Code snippets</li>
+                            <li>Web Hooks</li>
+                            <li>Groupes de projets</li>
+                            <li>Gestion de droits</li>
+                            <li>Branches privées</li>
+                            <li>2-factor authentification</li>
+                            <li>Gitlab Continuous Integration</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <img src="assets/img/gitlab_file_view.png" class="unstyled full-page" />
+                        <aside class="notes">
+                            <p>Repository File Browser</p>
+                            <ul>
+                                <li>Télécharger les sources</li>
+                                <li>Édition de fichiers</li>
+                                <li>Voir toutes les branches</li>
+                                <li>Comparer des branches/commits</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <img src="assets/img/gitlab_network_graph_view.png" class="unstyled full-page" />
+                        <aside class="notes">
+                            <p>Network Graph</p>
+                            <ul>
+                                <li>Plan du dépôt</li>
+                                <li>Historique complet</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <img src="assets/img/gitlab_diff_view.png" class="unstyled full-page" />
+                        <aside class="notes">
+                            <p>Fill Diff</p>
+                            <ul>
+                                <li>Code review</li>
+                                <li>Discussion globale ou sur une ligne précise</li>
+                                <li>Deux modes de vue</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <img src="assets/img/gitlab_mr.png" class="unstyled full-page" />
+                        <aside class="notes">
+                            <p>Merge request</p>
+                            <ul>
+                                <li>Code review</li>
+                                <li>Liste des commits et des modifications</li>
+                                <li>Statut du serveur d'intégration</li>
+                                <li>Accetper le merge</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <img src="assets/img/issue-tracker.png" class="unstyled full-page" />
+                        <aside class="notes">
+                            <p>Issue tracker</p>
+                            <ul>
+                                <li>Labels</li>
+                                <li>Milestones</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    
+                </section><!-- Gitlab -->
+
+                <section>
+                    
+                    <section data-background="assets/img/scrubs-boss.gif">
+                        <h1 class="text-shadow mgb">&Colon; The end &Colon;</h1>
+                        <h2 class="text-shadow">Merci</h2>
+                    </section>
+                    
+                    <section>
+                        <h4>Sources</h4>
+                        <ul class="tiny">
+                            <li><a href="http://nvie.com/posts/a-successful-git-branching-model/">Vincent Driessen</a></li>
+                            <li><a href="https://github.com/nvie/gitflow">git-flow</a></li>
+                            <li><a href="http://danielkummer.github.io/git-flow-cheatsheet/">git-flow cheatsheet</a></li>
+                            <li><a href="https://git-scm.com/book/">Git Book</a></li>
+                            <li><a href="https://about.gitlab.com/">Documentation GitLab</a></li>
+                            <li><a href="https://help.github.com/">Documentation GitHub</a></li>
+                            <li><a href="http://www.codeforest.net/git-vs-svn">CodeForest</a></li>
+                            <li><a href="https://www.atlassian.com/git/tutorials/">Atlassian</a></li>
+                        </ul>
+                    </section>
+                    
+                    
+                    
+                </section><!-- The end -->
+
+            </div><!-- .slides -->
+        </div>
+
+        <script src="libs/reveal.js/js/head.min.js"></script>
+        <script src="libs/reveal.js/js/reveal.js"></script>
+        <script src="assets/main.js"></script>
+
+    </body>
+</html>
